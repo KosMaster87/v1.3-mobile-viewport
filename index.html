@@ -16,6 +16,8 @@
     <script src="./models/throwable-object.class.js"></script>
 
     <script src="./models/keyboard.class.js"></script>
+    <script src="./models/keytouch.class.js"></script>
+    <script src="./models/keytouchControls.js" defer></script>
 
     <script src="./models/map-background.class.js"></script>
     <script src="./models/character.class.js"></script>
@@ -37,20 +39,22 @@
     <title>El Pollo Loco</title>
   </head>
 
-  <body>
+  <body onload="initAPI()">
     <h1>El Pollo loco</h1>
 
     <div class="mainLayerForCanvas" id="mainLayerForCanvas">
       <!-- -------------------------------------------------------------- -->
       <!-- CANVAS -->
       <!-- -------------------------------------------------------------- -->
-      <canvas
-        id="canvas"
-        class="canvas"
-        style="display: none"
-        width="720px"
-        height="480px"
-      ></canvas>
+      <div class="canvasParent" id="canvasParent" style="display: none">
+        <canvas
+          id="canvas"
+          class="canvas"
+          style="display: none"
+          width="720px"
+          height="480px"
+        ></canvas>
+      </div>
 
       <!-- -------------------------------------------------------------- -->
       <!-- START LAYER -->
@@ -256,6 +260,15 @@
         </div>
       </div>
 
+      <!-- -------------------------------------------------------------- -->
+      <!-- Steuerelemente für mobile Geräte -->
+      <!-- -------------------------------------------------------------- -->
+      <div id="mobile-controls">
+        <button id="left-button">←</button>
+        <button id="right-button">→</button>
+        <button id="jump-button">↑</button>
+        <button id="throw-button">★</button>
+      </div>
       <!-- -------------------------------------------------------------- -->
 
       <!-- -------------------------------------------------------------- -->

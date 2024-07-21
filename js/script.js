@@ -8,6 +8,7 @@ let isGameRunning = false;
 function startGame() {
   document.getElementById("startLayerForCanvas").style.display = "none";
   document.getElementById("buttonContainerSecond").style.display = "none";
+  document.getElementById("canvasParent").style.display = "block";
   document.getElementById("canvas").style.display = "block";
   document.getElementById("buttonContainerThird").style.display = "flex";
   isGameRunning = true;
@@ -64,6 +65,7 @@ function restart() {
 function returnToMenu() {
   document.getElementById("startLayerForCanvas").style.display = "block";
   document.getElementById("buttonContainerSecond").style.display = "flex";
+  document.getElementById("canvasParent").style.display = "none";
   document.getElementById("canvas").style.display = "none";
   document.getElementById("buttonContainerThird").style.display = "none";
   isGameRunning = false;
