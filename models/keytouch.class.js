@@ -1,3 +1,5 @@
+"use strict";
+
 class TouchController {
   constructor() {
     this.touchStartX = 0;

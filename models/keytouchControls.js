@@ -1,24 +1,26 @@
-document.getElementById("left-button").addEventListener("touchstart", () => {
-  keyboard.LEFT = true;
-});
-document.getElementById("left-button").addEventListener("touchend", () => {
-  keyboard.LEFT = false;
-});
+"use strict";
 
-document.getElementById("right-button").addEventListener("touchstart", () => {
-  keyboard.RIGHT = true;
-});
-document.getElementById("right-button").addEventListener("touchend", () => {
-  keyboard.RIGHT = false;
-});
+// document.getElementById("leftButton").addEventListener("touchstart", () => {
+//   keyboard.LEFT = true;
+// });
+// document.getElementById("leftButton").addEventListener("touchend", () => {
+//   keyboard.LEFT = false;
+// });
 
-document.getElementById("jump-button").addEventListener("touchstart", () => {
-  keyboard.UP = true;
-});
-document.getElementById("jump-button").addEventListener("touchend", () => {
-  keyboard.UP = false;
-});
+// document.getElementById("rightButton").addEventListener("touchstart", () => {
+//   keyboard.RIGHT = true;
+// });
+// document.getElementById("rightButtonn").addEventListener("touchend", () => {
+//   keyboard.RIGHT = false;
+// });
 
-document.getElementById("throw-button").addEventListener("touchstart", () => {
-  // Hier kannst du deine Wurfaktion hinzufügen
-});
+// document.getElementById("jumpButton").addEventListener("touchstart", () => {
+//   keyboard.UP = true;
+// });
+// document.getElementById("jumpButton").addEventListener("touchend", () => {
+//   keyboard.UP = false;
+// });
+
+// document.getElementById("throwButton").addEventListener("touchstart", () => {
+//   console.log("Pepe has throw.");
+// });
