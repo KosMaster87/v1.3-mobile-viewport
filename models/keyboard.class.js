@@ -7,53 +7,109 @@ class Keyboard {
   DOWN = false;
   SPACE = false;
   THROW = false; // Taste D
-  COMMAND = false;
-  AUDIO = false;
-  RESTART = false;
 
+  /**
+   * Tastatur oder toucheingabe einbinden. Bezogen auf die Anzeigegröße.
+   */
   constructor() {
-    window.addEventListener("keydown", (e) => {
-      // console.log(e.keyCode);
+    document.addEventListener(
+      "DOMContentLoaded",
+      this.checkScreenWidth.bind(this)
+    );
+    window.addEventListener("resize", this.checkScreenWidth.bind(this));
+    window.addEventListener("keydown", this.handleKeyDownEvent.bind(this));
+    window.addEventListener("keyup", this.handleKeyUpEvent.bind(this));
+  }
 
-      if (e.keyCode == 37) {
-        keyboard.LEFT = true;
-      }
-      if (e.keyCode == 39) {
-        keyboard.RIGHT = true;
-      }
-      if (e.keyCode == 38) {
-        keyboard.UP = true;
-      }
-      if (e.keyCode == 40) {
-        keyboard.DOWN = true;
-      }
-      if (e.keyCode == 32) {
-        keyboard.SPACE = true;
-      }
-      if (e.keyCode == 68) {
-        keyboard.THROW = true;
-      }
-    });
+  checkScreenWidth() {
+    if (window.innerWidth < 724) {
+      this.bindTouchPressEvents();
+    }
+  }
 
-    window.addEventListener("keyup", (e) => {
-      if (e.keyCode == 37) {
-        keyboard.LEFT = false;
-      }
-      if (e.keyCode == 39) {
-        keyboard.RIGHT = false;
-      }
-      if (e.keyCode == 38) {
-        keyboard.UP = false;
-      }
-      if (e.keyCode == 40) {
-        keyboard.DOWN = false;
-      }
-      if (e.keyCode == 32) {
-        keyboard.SPACE = false;
-      }
-      if (e.keyCode == 68) {
-        keyboard.THROW = false;
-      }
-    });
+  handleKeyDownEvent(e) {
+    switch (e.keyCode) {
+      case 37:
+        this.LEFT = true;
+        break;
+      case 39:
+        this.RIGHT = true;
+        break;
+      case 38:
+        this.UP = true;
+        break;
+      case 40:
+        this.DOWN = true;
+        break;
+      case 32:
+        this.SPACE = true;
+        break;
+      case 68:
+        this.THROW = true;
+        break;
+    }
+  }
+
+  handleKeyUpEvent(e) {
+    switch (e.keyCode) {
+      case 37:
+        this.LEFT = false;
+        break;
+      case 39:
+        this.RIGHT = false;
+        break;
+      case 38:
+        this.UP = false;
+        break;
+      case 40:
+        this.DOWN = false;
+        break;
+      case 32:
+        this.SPACE = false;
+        break;
+      case 68:
+        this.THROW = false;
+        break;
+    }
+  }
+
+  bindTouchPressEvents() {
+    const leftButton = document.getElementById("leftButton");
+    const rightButton = document.getElementById("rightButton");
+    const jumpButton = document.getElementById("jumpButton");
+    const throwButton = document.getElementById("throwButton");
+
+    if (leftButton) {
+      leftButton.addEventListener("touchstart", () => {
+        this.LEFT = true;
+      });
+      leftButton.addEventListener("touchend", () => {
+        this.LEFT = false;
+      });
+    }
+
+    if (rightButton) {
+      rightButton.addEventListener("touchstart", () => {
+        this.RIGHT = true;
+      });
+      rightButton.addEventListener("touchend", () => {
+        this.RIGHT = false;
+      });
+    }
+
+    if (jumpButton) {
+      jumpButton.addEventListener("touchstart", () => {
+        this.UP = true;
+      });
+      jumpButton.addEventListener("touchend", () => {
+        this.UP = false;
+      });
+    }
+
+    if (throwButton) {
+      throwButton.addEventListener("touchstart", () => {
+        console.log("Pepe has throw.");
+      });
+    }
   }
 }

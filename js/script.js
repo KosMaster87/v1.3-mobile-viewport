@@ -32,24 +32,24 @@ function startGameHandleInstructionPopUpSelf() {
   });
 }
 
-function gameOver() {
-  let popUpRef = document.getElementById("instructionPopUpSelf");
-  popUpRef.style.display = "none";
-  document.getElementById("canvas").style.display = "none";
-  document.getElementById("gameOverLayerForCanvas").style.display = "block";
-  isGameRunning = false;
-  clearAllIntervals();
-}
+// function gameOver() {
+//   let popUpRef = document.getElementById("instructionPopUpSelf");
+//   popUpRef.style.display = "none";
+//   document.getElementById("canvas").style.display = "none";
+//   document.getElementById("gameOverLayerForCanvas").style.display = "block";
+//   isGameRunning = false;
+//   clearAllIntervals();
+// }
 
-function winningGame() {
-  let popUpRef = document.getElementById("instructionPopUpSelf");
-  popUpRef.style.display = "none";
-  document.getElementById("canvas").style.display = "none";
-  document.getElementById("gameIsWinningOverLayerForCanvas").style.display =
-    "block";
-  isGameRunning = false;
-  clearAllIntervals();
-}
+// function winningGame() {
+//   let popUpRef = document.getElementById("instructionPopUpSelf");
+//   popUpRef.style.display = "none";
+//   document.getElementById("canvas").style.display = "none";
+//   document.getElementById("gameIsWinningOverLayerForCanvas").style.display =
+//     "block";
+//   isGameRunning = false;
+//   clearAllIntervals();
+// }
 
 function restart() {
   let popUpRef = document.getElementById("instructionPopUpSelf");

@@ -211,12 +211,8 @@ h1 {
 
 /* ----------------------------------------- */
 .mobileControls {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
+  width: 720px;
+  height: 480px;
 }
 
 .mobileControls button {
@@ -226,5 +222,27 @@ h1 {
   border: none;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.5);
+}
+
+.leftControlPanal {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  /* position: relative;
+  right: -70px;
+  bottom: -165px; */
+  width: 50px;
+  height: 120px;
+}
+
+.rightControlPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  /* position: relative;
+  right: -700px;
+  bottom: -50px; */
+  width: 50px;
+  height: 120px;
 }
 /* ----------------------------------------- */

@@ -16,8 +16,8 @@
     <script src="./models/throwable-object.class.js"></script>
 
     <script src="./models/keyboard.class.js"></script>
-    <script src="./models/keytouch.class.js"></script>
-    <script src="./models/keytouchControls.js" defer></script>
+    <!-- <script src="./models/keytouch.class.js"></script> -->
+    <!-- <script src="./models/keytouchControls.js" defer></script> -->
 
     <script src="./models/map-background.class.js"></script>
     <script src="./models/character.class.js"></script>
@@ -43,15 +43,6 @@
     <h1>El Pollo loco</h1>
 
     <!-- -------------------------------------------------------------- -->
-    <!-- Steuerelemente für mobile Geräte -->
-    <!-- -------------------------------------------------------------- -->
-    <div class="mobileControls" id="mobileControls">
-      <button id="leftButton">←</button>
-      <button id="rightButton">→</button>
-      <button id="jumpButton">↑</button>
-      <button id="throwButton">★</button>
-    </div>
-    <!-- -------------------------------------------------------------- -->
 
     <!-- -------------------------------------------------------------- -->
 
@@ -67,6 +58,20 @@
           width="720px"
           height="480px"
         ></canvas>
+
+        <!-- -------------------------------------------------------------- -->
+        <!-- Steuerelemente für mobile Geräte -->
+        <!-- -------------------------------------------------------------- -->
+        <div class="mobileControls" id="mobileControls">
+          <div class="leftControlPanal" id="leftControlPanal">
+            <button id="jumpButton">↑</button>
+            <button id="leftButton">←</button>
+          </div>
+          <div class="rightControlPanel" id="rightControlPanel">
+            <button id="rightButton">→</button>
+            <button id="throwButton">★</button>
+          </div>
+        </div>
       </div>
 
       <!-- -------------------------------------------------------------- -->
@@ -243,11 +248,11 @@
             </div>
             <div class="controllThrow" id="controllThrow">
               THROW YOUR SALSA
-              <img src="/img/10_menu/point_scan.svg" alt="AIM key." />
+              <img src="./img/10_menu/point_scan.svg" alt="AIM key." />
             </div>
             <div class="controllJump" id="controllJump">
               JUMP OVER
-              <img src="/img/10_menu/space_bar.svg" alt="Spacekey." />
+              <img src="./img/10_menu/space_bar.svg" alt="Spacekey." />
             </div>
           </div>
 
@@ -272,38 +277,7 @@
           </div>
         </div>
       </div>
-
       <!-- -------------------------------------------------------------- -->
     </div>
   </body>
-  <script>
-    document.getElementById("leftButton").addEventListener("touchstart", () => {
-      keyboard.LEFT = true;
-    });
-    document.getElementById("leftButton").addEventListener("touchend", () => {
-      keyboard.LEFT = false;
-    });
-
-    document
-      .getElementById("rightButton")
-      .addEventListener("touchstart", () => {
-        keyboard.RIGHT = true;
-      });
-    document.getElementById("rightButton").addEventListener("touchend", () => {
-      keyboard.RIGHT = false;
-    });
-
-    document.getElementById("jumpButton").addEventListener("touchstart", () => {
-      keyboard.UP = true;
-    });
-    document.getElementById("jumpButton").addEventListener("touchend", () => {
-      keyboard.UP = false;
-    });
-
-    document
-      .getElementById("throwButton")
-      .addEventListener("touchstart", () => {
-        console.log("Pepe has throw.");
-      });
-  </script>
 </html>

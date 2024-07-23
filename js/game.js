@@ -4,6 +4,21 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 
+// ------------------------------------------------------------
+
+/**
+ * Der Callback soll den Typen der meta dementspächendt ändern.
+ */
+document.addEventListener("DOMContentLoaded", (event) => {
+  canvas = document.getElementById("canvas");
+
+  window.addEventListener("resize", resizeCanvas); // Event-Listener für das Ändern der Fenstergröße
+  window.addEventListener("orientationchange", resizeCanvas); // Event-Listener für das Ändern der Bildschirmorientierung
+  resizeCanvas();
+});
+
+// ------------------------------------------------------------
+
 /**
  * Funktion, die das Canvas an die Größe des Fensters anpasst.
  */
@@ -12,11 +27,7 @@ function resizeCanvas() {
   canvas.height = window.innerHeight;
 }
 
-/**
- * Der Callback soll den Typen der meta dementspächendt ändern.
- */
-window.addEventListener("resize", resizeCanvas); // Event-Listener für das Ändern der Fenstergröße
-window.addEventListener("orientationchange", resizeCanvas); // Event-Listener für das Ändern der Bildschirmorientierung
+// ------------------------------------------------------------
 
 /**
  * New World load the canvas in world.class.js
@@ -25,7 +36,10 @@ window.addEventListener("orientationchange", resizeCanvas); // Event-Listener f�
 function initGame() {
   canvas = document.getElementById("canvas");
   resizeCanvas();
+  // const keyboard = new Keyboard();
   world = new World(canvas, keyboard);
 
   startGame();
 }
+
+// ------------------------------------------------------------
