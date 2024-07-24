@@ -20,9 +20,21 @@ document.addEventListener("DOMContentLoaded", (event) => {
  * Funktion, die das Canvas an die Größe des Fensters anpasst.
  */
 function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  const canvasParentRef = document.getElementById("canvasParent");
+  const mobileControlsRef = document.getElementById("mobileControls");
+
+  canvas.width = canvasParentRef.clientWidth;
+  canvas.height = canvasParentRef.clientHeight;
+
+  if (mobileControlsRef) {
+    mobileControlsRef.style.width = canvasParentRef.clientWidth + 'px';
+    mobileControlsRef.style.height = canvasParentRef.clientHeight + 'px';
+  }
 }
+// function resizeCanvas() {
+//   canvas.width = window.innerWidth;
+//   canvas.height = window.innerHeight;
+// }
 
 /**
  * New World load the canvas in world.class.js
@@ -34,3 +46,6 @@ function initGame() {
   world = new World(canvas, keyboard);
   startGame();
 }
+
+// Ensure the canvas resizes properly when the window size changes
+window.addEventListener("resize", resizeCanvas);
