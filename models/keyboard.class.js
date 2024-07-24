@@ -12,19 +12,14 @@ class Keyboard {
    * Tastatur oder toucheingabe einbinden. Bezogen auf die Anzeigegröße.
    */
   constructor() {
+    this.bindTouchPressEvents();
     document.addEventListener(
       "DOMContentLoaded",
-      this.checkScreenWidth.bind(this)
+      this.toggleMobileControls.bind(this)
     );
-    window.addEventListener("resize", this.checkScreenWidth.bind(this));
+    window.addEventListener("resize", this.toggleMobileControls.bind(this));
     window.addEventListener("keydown", this.handleKeyDownEvent.bind(this));
     window.addEventListener("keyup", this.handleKeyUpEvent.bind(this));
-  }
-
-  checkScreenWidth() {
-    if (window.innerWidth < 1081) {
-      this.bindTouchPressEvents();
-    }
   }
 
   handleKeyDownEvent(e) {
@@ -108,8 +103,20 @@ class Keyboard {
 
     if (throwButton) {
       throwButton.addEventListener("touchstart", () => {
-        console.log("Pepe has throw.");
+        this.THROW = true;
       });
+      throwButton.addEventListener("touchend", () => {
+        this.THROW = false;
+      });
+    }
+  }
+
+  toggleMobileControls() {
+    const mobileControls = document.getElementById("mobileControls");
+    if (window.innerWidth < 1080) {
+      mobileControls.style.display = "block";
+    } else {
+      mobileControls.style.display = "none";
     }
   }
 }

@@ -211,6 +211,7 @@ h1 {
 
 /* ----------------------------------------- */
 .mobileControls {
+  position: relative;
   width: 720px;
   height: 480px;
 }
