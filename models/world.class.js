@@ -44,7 +44,7 @@ class World {
    * Sowie auch die Berührung der Flaschen.
    */
   run() {
-    setInterval(() => {
+    setStoppableInterval(() => {
       this.checkCollisions();
       this.checkThrowObject();
     }, 200);

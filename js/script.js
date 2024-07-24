@@ -1,10 +1,24 @@
 "use strict";
 
-let isGameRunning = false;
+// /**
+//  * Die bessere Weise der beendigung der Intervale, da hier jedes Interval in das laufende Array eingetragen wird.
+//  * The better way of terminating intervals, because here each interval is entered into the current array.
+//  */
+// function setStoppableInterval(fn, time) {
+//   let id = setInterval(fn, time);
+//   intervalIds.push(id);
+// }
 
-// ------------------------------------------------------------------------
-// HTML manager
-// ------------------------------------------------------------------------
+// function clearAllIntervals() {
+//   intervalIds.forEach(clearInterval);
+//   intervalIds = [];
+// }
+
+function resetGlobals() {
+  isGameRunning = false;
+  world = null;
+}
+
 function startGame() {
   document.getElementById("startLayerForCanvas").style.display = "none";
   document.getElementById("buttonContainerSecond").style.display = "none";
@@ -13,6 +27,47 @@ function startGame() {
   document.getElementById("buttonContainerThird").style.display = "flex";
   isGameRunning = true;
   startGameHandleInstructionPopUpSelf();
+}
+
+function restart() {
+  let popUpRef = document.getElementById("instructionPopUpSelf");
+  popUpRef.style.display = "none";
+  document.getElementById("gameOverLayerForCanvas").style.display = "none";
+  document.getElementById("gameIsWinningOverLayerForCanvas").style.display =
+    "none";
+  clearAllIntervals();
+  resetGlobals();
+  initGame();
+}
+
+function gameOver() {
+  let popUpRef = document.getElementById("instructionPopUpSelf");
+  popUpRef.style.display = "none";
+  document.getElementById("canvas").style.display = "none";
+  document.getElementById("gameOverLayerForCanvas").style.display = "block";
+  isGameRunning = false;
+  clearAllIntervals();
+}
+
+function winningGame() {
+  let popUpRef = document.getElementById("instructionPopUpSelf");
+  popUpRef.style.display = "none";
+  document.getElementById("canvas").style.display = "none";
+  document.getElementById("gameIsWinningOverLayerForCanvas").style.display =
+    "block";
+  isGameRunning = false;
+  clearAllIntervals();
+}
+
+function returnToMenu() {
+  clearAllIntervals();
+  resetGlobals();
+  document.getElementById("startLayerForCanvas").style.display = "block";
+  document.getElementById("buttonContainerSecond").style.display = "flex";
+  document.getElementById("canvasParent").style.display = "none";
+  document.getElementById("canvas").style.display = "none";
+  document.getElementById("buttonContainerThird").style.display = "none";
+  returnToMenuHandleInstructionPopUpSelf();
 }
 
 function startGameHandleInstructionPopUpSelf() {
@@ -32,47 +87,6 @@ function startGameHandleInstructionPopUpSelf() {
   });
 }
 
-// function gameOver() {
-//   let popUpRef = document.getElementById("instructionPopUpSelf");
-//   popUpRef.style.display = "none";
-//   document.getElementById("canvas").style.display = "none";
-//   document.getElementById("gameOverLayerForCanvas").style.display = "block";
-//   isGameRunning = false;
-//   clearAllIntervals();
-// }
-
-// function winningGame() {
-//   let popUpRef = document.getElementById("instructionPopUpSelf");
-//   popUpRef.style.display = "none";
-//   document.getElementById("canvas").style.display = "none";
-//   document.getElementById("gameIsWinningOverLayerForCanvas").style.display =
-//     "block";
-//   isGameRunning = false;
-//   clearAllIntervals();
-// }
-
-function restart() {
-  let popUpRef = document.getElementById("instructionPopUpSelf");
-  popUpRef.style.display = "none";
-  document.getElementById("gameOverLayerForCanvas").style.display = "none";
-  document.getElementById("gameIsWinningOverLayerForCanvas").style.display =
-    "none";
-  isGameRunning = false;
-  clearAllIntervals();
-  initGame();
-}
-
-function returnToMenu() {
-  document.getElementById("startLayerForCanvas").style.display = "block";
-  document.getElementById("buttonContainerSecond").style.display = "flex";
-  document.getElementById("canvasParent").style.display = "none";
-  document.getElementById("canvas").style.display = "none";
-  document.getElementById("buttonContainerThird").style.display = "none";
-  isGameRunning = false;
-  clearAllIntervals();
-  returnToMenuHandleInstructionPopUpSelf();
-}
-
 function returnToMenuHandleInstructionPopUpSelf() {
   let popUpRef = document.getElementById("instructionPopUpSelf");
   popUpRef.style.display = "none";
@@ -89,14 +103,6 @@ function returnToMenuHandleInstructionPopUpSelf() {
   });
 }
 
-function closeInstructionPopUpSelf_manuel() {
-  let popUpRef = document.getElementById("instructionPopUpSelf");
-  popUpRef.style.display = "none";
-}
-
-// ------------------------------------------------------------------------
-// PopUp Event
-// ------------------------------------------------------------------------
 /**
  * Open the "instruction PopUp".
  */
@@ -129,7 +135,7 @@ function closeInstructionPopUpSelf_outside(event) {
   }
 }
 
-// ------------------------------------------------------------------------
-function clearAllIntervals() {
-  for (let i = 1; i < 9999; i++) window.clearInterval(i);
+function closeInstructionPopUpSelf_manuel() {
+  let popUpRef = document.getElementById("instructionPopUpSelf");
+  popUpRef.style.display = "none";
 }
