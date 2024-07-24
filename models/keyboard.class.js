@@ -22,7 +22,7 @@ class Keyboard {
   }
 
   checkScreenWidth() {
-    if (window.innerWidth < 724) {
+    if (window.innerWidth < 1081) {
       this.bindTouchPressEvents();
     }
   }
